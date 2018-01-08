@@ -1,0 +1,113 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- Mobile first, para que no se haga zoom -->
+	<title>Bola Mundo</title>	
+
+	<link rel="stylesheet" href="cssbola.css"> 
+	<!-- Falta el Normalize y Modernizr -->
+</head>
+<body>
+
+	<div class="content">
+	</div>
+
+	<div class="contenedor">
+		<div class="cubo">
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+		</div>
+	</div>
+	
+	<div id="piramide">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<div id="contenedor">
+		<div id="horas1" class="rueda">
+		</div>
+
+		<div id="horas2" class="rueda">
+		</div>
+
+		<div id="minutes1" class="rueda">
+		</div>
+
+		<div id="minutes2" class="rueda">
+		</div>
+
+		<div id="seconds1" class="rueda">
+		</div>
+
+		<div id="seconds2" class="rueda">
+		</div>
+	</div>
+
+<!-- 139 Llenar Rueda
+
+//para mostrar la hora actual hay que ajustar los valores que se muestren de 
+//entrada, en vez de partir de 0 cada vez que se refresque, script en el index-->
+
+<script>
+	function llenarRueda(rueda, inicio, limite){
+		var ruedaReloj = document.getElementById(rueda);
+		cadena = "";
+
+		for (i = inicio; i < 10; i++){
+			cadena = cadena + "<div class='card c" + i + "'>";
+			if (i <= limite) cadena = cadena + i;
+			cadena = cadena + "</div>";
+		}
+
+		for (i = 0 ; i < inicio; i++){
+			cadena = cadena + "<div class='card c" + i + "'>";
+			if (i <= limite) cadena = cadena + i;
+			cadena = cadena + "</div>";
+		}
+		ruedaReloj.innerHTML = cadena;
+	}
+	
+	//Clase 140 Asignar hora actual
+	var time = new Date();
+	var horass1= time.getHours();
+	while( horass1 % 10 !=0) horass1--;
+	horass1 = horass1 / 10;
+	llenarRueda("horas1", horass1, 2);
+
+	var horass2 = time.getHours();
+	horass2 = horass2 - (horass1 * 10);
+	llenarRueda("horas2", horass2, 9);
+
+
+	var minutess1= time.getMinutes();
+	while( minutess1 % 10 !=0) minutess1--;
+	minutess1 = minutess1 / 10;
+	llenarRueda("minutes1", minutess1, 5);
+
+	var minutess2 = time.getMinutes();
+	minutess2 = minutess2 - (minutess1 * 10);
+	llenarRueda("minutes2", minutess2, 9);
+
+
+	var secondss1= time.getMinutes();
+	while( secondss1 % 10 !=0) secondss1--;
+	secondss1 = minutess1 / 10;
+	llenarRueda("seconds1", secondss1, 5);
+
+	var secondss2 = time.getMinutes();
+	secondss2 = secondss2 - (secondss1 * 10);
+	llenarRueda("seconds2", secondss2, 9);
+
+
+</script>
+
+
+</body>
+</html>

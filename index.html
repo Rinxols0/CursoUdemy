@@ -1,0 +1,200 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- Fobile first, para que no se haga zoom -->
+	<title>Efectos CSS3</title>	
+
+	<link rel="stylesheet" href="css/effects.css"> 
+	<!-- Falta el Normalize y Modernizr -->
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#" OnClick="MuestraEfectos()">Efectos</a></li>
+			<li><a href="#">Animaciones</a></li>
+			<li><a href="#">Animaciones 2</a></li>
+			<li><a href="#">Opcion4</a></li>
+			<li><a href="#">Opcion4</a></li>
+		</ul>
+	</nav>
+
+	
+
+	<div id="Efectos">
+		<div class="triangulo_lateral">
+			<p>Triangulo lateral</p>
+		</div>
+		<div class="triangulo_fijo">
+			<p>Triangulo Fijo</p>
+		</div>
+		<div class="esquina_pagina">
+			<p>Esquina Página</p>
+		</div>
+		<div class="sombra_fija">
+			<p>Sombra fija</p>
+		</div>
+		<div class="sombra_difu">
+			<p>Sombra Difuminada</p>
+		</div>
+		<div class="sombra_radi">
+			<p>Sombra Radial</p>
+		</div>
+		<div class="sombra_ex">
+			<p>Sombra Externa</p>
+		</div>
+		<div class="iluminacion">
+			<p>Iluminacion</p>
+		</div>
+		<div class="resalte_borde">
+			<p>Resalte Borde</p>
+		</div>
+		<div class="borde_interno">
+			<p>Borde Interno</p>
+		</div>
+		<div class="expansion_borde">
+			<p>Expansion de Borde</p>
+		</div>
+		<div class="expansion_borde2">
+			<p>Expansion de Borde</p>
+		</div>
+		<div class="esquina_redondeada">
+			<p>Esquina redondeada</p>
+		</div>
+		<div class="flash">
+			<p>Fhash</p>
+		</div>
+	</div>
+
+	<div id="Animaciones">
+		<div class="click">
+			<p>Click</p>
+		</div>
+		<div class="chicle">
+			<p>Chicle</p>
+		</div>
+		<div class="vibrador">
+			<p>Vibrador</p>
+		</div>
+		<div class="cartel">
+			<p>Cartel</p>
+		</div>
+		<div class="balanceo">
+			<p>Balanceo</p>
+		</div>
+		<div class="vaiven">
+			<p>Vaivén</p>
+		</div>
+		<div class="caida">
+			<p>Caída</p>
+		</div>
+		<div class="inRotativo">
+			<p>IN Rotativo</p>
+		</div>
+		<div class="outRotativo">
+			<p>Out Rotativo</p>
+		</div>
+	</div>
+
+	<div id="Rebotes">
+		<div class="rebote">
+			<p>Rebote</p>
+		</div>
+		<div class="rebotein">
+			<p>Rebote IN</p>
+		</div>
+		<div class="reboteinva">
+			<p>Rebote IN Variantes</p>
+		</div>
+		<div class="reboteout">
+			<p>Rebote Out</p>
+		</div>
+		<div class="reboteoutva">
+			<p>Rebote Out Variantes</p>
+		</div>
+		<div class="fadein">
+			<p>Fade In</p>
+		</div>
+		<div class="fadein">
+			<div class="tapa"></div>
+			<p>Fade In Variantes</p>
+		</div>
+		<div class="velozin">
+			<p>Veloz In</p>
+		</div>
+		<div class="velozout">
+			<p>Veloz Out</p>
+		</div>
+		<div class="giro">
+			<p>Giro</p>
+		</div>
+		<div class="girova">
+			<p>Giro Variantes</p>
+		</div>
+		<div class="sombramo">
+			<p>Giro Variantes</p>
+		</div>
+		<div class="flecha">
+			<p>Flecha</p>
+		</div>
+		
+	</div>
+
+	<div id="3D">
+		<div class="girox">
+			<p>Giro eje Horizontal</p>
+		</div>
+		<div class="giroy">
+			<p>Giro eje Vertical</p>
+		</div>
+		<div class="giroouty">
+			<p>Giro salida Vertical</p>
+		</div>
+		<div class="giro3d">
+			<p>Giro 3d</p>
+		</div>
+		<div class="box">
+			<div class="front"></div>
+			<div class="back">
+				<p>Titulo</p>
+				<p>Descripción guay del contenido del cubo, por ejemplo.</p>
+			</div>
+		</div>
+		
+		<p class="texto3d">hola</p>
+	</div>
+
+	<div class="contenedor">
+		<div class="cubo">
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+			<div class="cara"></div>
+		</div>
+	</div>
+	
+	<script>
+		function MuestraEfectos(){
+			var display;
+			var menu = document.getElementByID("Efectos");
+			display = menu.style.display;
+			alert("hola");
+
+			if (display == "none"){
+				menu.style.display = "inline-block"
+			}
+			else{
+				menu.style.display = "none"
+			}
+		}
+
+	</script>
+
+	
+	
+	
+	
+
+</body>
+</html>

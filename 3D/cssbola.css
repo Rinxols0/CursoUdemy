@@ -1,0 +1,398 @@
+body{
+	background: #292929;
+	color: #fff;
+	font-family: Helvetica;
+}
+/*Clase 130 Bola mundo*/
+
+.content{
+	width: 200px;
+	height: 200px;
+	margin: 100px;
+	background: url("mapa.png");
+	border-radius: 50%;
+	-webkit-animation: 10s rotation infinite linear;
+	/*linear para que sea un movimiento constante*/
+	box-shadow: 0px 5px 15px #888;
+	/*Sombra para efecto 3D */
+}
+
+@-webkit-keyframes rotation{
+	0%{
+		background-position: 0px 0px;
+	}
+	100%{
+		background-position: -350px 0px;
+	}
+}
+
+/*Clase 132 cubo rubik*/
+
+
+.contenedor{
+  perspective: 1000px;
+  /*perspective para que no esté cerca, con pocos las esquinas saldrían muy pronun-
+  ciadas y saldría distorsionado, se le puede dar perspectiva sin poner el transform*/
+  perspective-origin: 50% 50%;
+  background: white;
+}
+.cubo{
+  transform-style: preserve-3d;
+  transform: rotateY(-30deg);
+  /*Rotado 30 grados el cubo, que contiene las caras, para que se incline y poder
+  ver las caras */
+  margin:200px auto;
+  background: white;
+  height: 0px;
+  width: 0px;
+}
+.cubo > div{
+  height: 290px;
+  width: 290px;
+}
+.cara{
+  position: absolute;
+  border: 5px solid black;
+  opacity: 0.8;
+}
+
+/*.cubo > div = afecta a los div hijos del div clase cubo, osea afecta a los div
+"cara". A las caras. Le da un alto y largo de 290 porque se le deberá de sumas los
+5px por lado del borde, sumando 300px*/
+
+.cubo .cara:nth-child(1){
+  background: red;
+  transform: translateZ(150px);
+}
+.cubo .cara:nth-child(2){
+  background: blue;
+  transform: translateZ(-150px);
+}
+.cubo .cara:nth-child(3){
+  background: green;
+  transform: translateX(-150px) 
+              rotateY(90deg);
+}
+.cubo .cara:nth-child(4){
+  background: yellow;
+  transform: translateX(150px) 
+              rotateY(-90deg);
+}
+.cubo .cara:nth-child(5){
+  background: orange;
+  transform: translateY(-150px) 
+              rotateX(-90deg);
+}
+.cubo .cara:nth-child(6){
+  background: white;
+  transform: translateY(150px) 
+              rotateX(-90deg);
+}
+
+/*los translate deberían de ser de 150 pero como tengo mucho codigo en este mismo 
+archivo algún código le está afectando y no se que es :(*/
+
+.cubo{
+  animation: giro 20s infinite linear;
+}
+
+@-webkit-keyframes giro{
+  0%{
+    transform: rotateX(-45deg) rotateY(0deg);
+  }
+  50%{
+    transform: rotateX(45deg) rotateY(360deg);
+  }
+  100%{
+    transform: rotateX(-45deg) rotateY(720deg);
+  }
+}
+
+/*clase 133 Pirámide triangular*/
+
+#piramide{
+	position: relative;
+	/*porque es el padre, todo va a ir dentro de él*/
+	top:800px;
+	width: 100px;
+	height: 500px;
+	margin: 80px auto; 
+	/*para que se centre*/
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform-origin: 116px 200px 116px;
+	-webkit-transform: rotateY(30deg);
+	/*rotate para girar un poco la pirámide*/
+	-webkit-animation: giropi 10s infinite linear;
+}
+
+#piramide > div {
+	position: absolute;
+	border-style: solid;
+	border-width: 200px 0px 200px 346px;
+	/*cada una de los divs, que son hijos de piramide, que son las caras van en 
+	absolute para colocarlas dentro	del div padre piramide, border solido y border
+	width para hacer forma de triángulo al div*/
+	-webkit-transform-origin: 0 0;
+}
+
+#piramide > div:nth-child(1){ /*base*/
+	border-color: transparent transparent transparent rgba(0,0,255,0.8);
+	/*borde negro, con una pequeña transparencia, le damos a todos los lados 
+	transparencia menos al de la izquierda, porque la cara va a apuntar a la 
+	derecha*/
+	-webkit-transform: rotateX(-60deg)
+						rotateY(19.5deg)
+						translateX(-116px)
+						translateY(-200px)
+						translateZ(326px);
+}
+#piramide > div:nth-child(2){
+	border-color: transparent transparent transparent rgba(255,0,0,0.8);
+	-webkit-transform: rotateY(-19.5deg)
+						rotateX(180deg)
+						translateY(-400px);
+	
+}
+#piramide > div:nth-child(3){
+	border-color: transparent transparent transparent rgba(0,255,0,0.8);
+	-webkit-transform: rotateY(90deg)
+						rotateZ(60deg)
+						rotateX(180deg)
+						translateY(-400px);
+}
+#piramide > div:nth-child(4){
+	border-color: transparent transparent transparent rgba(255,255,255,0.8);
+	-webkit-transform: rotateX(60deg)
+						rotateY(19.5deg);
+	
+}
+
+@-webkit-keyframes giropi{
+	from{
+		-webkit-transform: rotateY(0deg)
+							rotateX(0deg)
+							rotateZ(0deg);
+	}
+	to{
+		-webkit-transform: rotateY(360deg)
+							rotateZ(360deg)
+							rotateX(360deg);
+	}
+}
+
+/*134 Presentación Proyecto 3D*/
+/*135 Creación rueda*/
+
+#contenedor{
+	position: relative;
+	text-align: center;
+	width: 100%;
+	transform-style: preserve-3d;
+	/* alineamos el texto en el centro, que ocupe el 100% de la anchura de la página,
+	todo lo que haya dentro lo ponga en estylo 3d */
+	-webkit-transform: perspective(6000px);
+	/*darle perspectiva para decirle con cuanta distancia quiero que se visualice*/
+}
+.rueda{
+	margin: 1250px 50px;
+	/*margen de 250px, 1250 porque hay más cosas en la página, arriba y abajo y 
+	50 a los lados*/
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+#horas1{
+	left: 0px;
+}
+#horas2{
+	left: 160px;
+}
+#minutes1{
+	left: 370px;
+}
+#minutes2{
+	left: 530px;
+}
+#seconds1{
+	left: 740px;
+}
+#seconds2{
+	left: 900px;
+}
+
+.card{ /*definimos las tarjetas*/
+	height: 150px;
+	width: 150px;
+	border-radius: 5px;
+	border: 1px solid white;
+	font-size: 5em;
+	font-weight: bolder;
+	line-height: 140px;
+	background: rgba(10,10,10,0.9);
+	/*borde con esquina redonda, borde de 1px blanco, la letra más grande, negrita, 
+	la linea de la misma altura casi que la tarjeta para que se quede centrada, el 
+	fondo oscuro (casi negro) y un poco transparente */
+	position: absolute; 
+	/*a de ser absolute para colocarlas libremente dentro del contenedor*/
+}
+.rueda div:nth-of-type(1){
+	-webkit-transform: rotateX(0deg) translateZ(240px);
+}
+.rueda div:nth-of-type(2){
+	-webkit-transform: rotateX(36deg) translateZ(240px);
+}
+.rueda div:nth-of-type(3){
+	-webkit-transform: rotateX(72deg) translateZ(240px);
+}
+.rueda div:nth-of-type(4){
+	-webkit-transform: rotateX(108deg) translateZ(240px);
+}
+.rueda div:nth-of-type(5){
+	-webkit-transform: rotateX(144deg) translateZ(240px);
+}
+.rueda div:nth-of-type(6){
+	-webkit-transform: rotateX(180deg) translateZ(240px);
+}
+.rueda div:nth-of-type(7){
+	-webkit-transform: rotateX(216deg) translateZ(240px);
+}
+.rueda div:nth-of-type(8){
+	-webkit-transform: rotateX(252deg) translateZ(240px);
+}
+.rueda div:nth-of-type(9){
+	-webkit-transform: rotateX(288deg) translateZ(240px);
+}
+.rueda div:nth-of-type(10){
+	-webkit-transform: rotateX(324deg) translateZ(240px);
+}
+/* con cada una de las clases afectamos a cada una de las tarjetas individualmente
+con el rotate asignamos en que grado, del circulo de 360 grados, se posiciona, con 
+traslateZ mandamos al fondo para dar profundidad*/
+
+/*136 Giro de la rueda*/
+
+#seconds2{
+	-webkit-animation: giro_total 10s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+#seconds1{
+	-webkit-animation: giro_medio 60s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+#minutes2{
+	-webkit-animation: giro_total 600s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+#minutes1{
+	-webkit-animation: giro_medio 3600s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+#horas2{
+	-webkit-animation: giro_total 36000s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+#horas1{
+	-webkit-animation: giro_horas 86400s infinite linear;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center;
+}
+
+/*137 Reloj Completo */
+
+@-webkit-keyframes giro_total{
+	0%, 8%{
+		-webkit-transform: rotateX(0deg);
+	}
+	10%, 18%{
+		-webkit-transform: rotateX(-36deg);
+	}
+	20%, 28%{
+		-webkit-transform: rotateX(-72deg);
+	}
+	30%, 38%{
+		-webkit-transform: rotateX(-108deg);
+	}
+	40%, 48%{
+		-webkit-transform: rotateX(-144deg);
+	}
+	50%, 58%{
+		-webkit-transform: rotateX(-180deg);
+	}
+	60%, 68%{
+		-webkit-transform: rotateX(-216deg);
+	}
+	70%, 78%{
+		-webkit-transform: rotateX(-252deg);
+	}
+	80%, 88%{
+		-webkit-transform: rotateX(-288deg);
+	}
+	90%, 98%{
+		-webkit-transform: rotateX(-324deg);
+	}
+	100%{
+		-webkit-transform: rotateX(-360deg);
+	}
+}
+
+/*138 Giros sincronizados*/
+
+@-webkit-keyframes giro_medio{
+	0%, 15%{
+		-webkit-transform: rotateX(0deg);
+	}
+	16.6%, 32%{
+		-webkit-transform: rotateX(-36deg);
+	}
+	33.3%, 48%{
+		-webkit-transform: rotateX(-72deg);
+	}
+	50%, 65%{
+		-webkit-transform: rotateX(-108deg);
+	}
+	66.6%, 82%{
+		-webkit-transform: rotateX(-144deg);
+	}
+	83.3%, 98%{
+		-webkit-transform: rotateX(-180deg);
+	}
+	100%{
+		-webkit-transform: rotateX(-360deg);
+	}
+}
+
+/*dividimos el 100% del giro en 6 casillas (del 0 al 5). 16.6*/
+
+@-webkit-keyframes giro_horas{
+	0%, 41.5%{
+		-webkit-transform: rotateX(0deg);
+	}
+	41.6%, 83.2%{
+		-webkit-transform: rotateX(-36deg);
+	}
+	83.3%, 99.9%{
+		-webkit-transform: rotateX(-72deg);
+	}
+	100%{
+		-webkit-transform: rotateX(-360deg);
+	}
+}
+/* 0-1-2 y vuelve. 100% lo dividimos en 24 horas= 4.166. Con el 0 hay 10 horas 41.6,   
+con el 1 hay otras 10 horas +41.6 y con el 2 hay 4 hora resto. */
+
+/*139 Llenar Rueda*/
+
+/*para mostrar la hora actual hay que ajustar los valores que se muestren de 
+entrada, en vez de partir de 0 cada vez que se refresque, script en el index*/
+
+
+
+
+

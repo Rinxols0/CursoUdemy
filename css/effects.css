@@ -1,0 +1,1230 @@
+div div{
+  font-family: 'Arial';
+  background-color: #a8cf45;
+  margin: 25px 15px;
+  text-align: center;
+  font-weight: bolder;
+  padding: 15px 30px;
+  width: 80px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 10px;
+}
+div#Efectos{
+  display: none;
+  position: relative;
+  top: 30px;
+}
+
+/*Opcion 1 hasta Fhash Efectos Transformaciones
+OPcion 2 keyframes Animaciones*/
+
+/*Clase 85 Triangulo Lateral*/
+.triangulo_lateral{ /* clase asociada al div */
+  -webkit-transform: translateX(0); /* no se desplace */
+}
+.triangulo_lateral:before{ /* definimos pseudoclase before*/
+  content: '';
+  border-style: solid;
+  border-width: 10px 10px 10px 0px;
+  border-color: transparent
+                #a8cf45 
+                transparent
+                transparent;
+  /* Para hacer el triangulo se ha de dar border a todos menos ha donde 
+  queremos que apunte y color transparen a todos menos al opuesto donde
+  queremos que apunte*/
+  position: absolute;
+  left: 0px;
+  top: 33%;
+  /* posicionamos el pseudo elemento en una posición absoluta para que 
+  se pueda dibujar encima del elemento, en el borde izquierdo 0 y se 
+  empezará a dibujar en el 33% del elemento empezando por arriba */
+}
+.triangulo_lateral:hover:before{ /* Cuando pase por encima de la psclase*/
+  left: -9px;
+    /* al pasar por encima del pseudoelemento se posiciona desde la izquier-
+  da -9px*/
+  -webkit-transition-duration:0.3s;
+  /*tiempo de transición del pseudoelemento */
+}
+
+/*Clase 86 Triangulo fijo*/
+.triangulo_fijo{ /* clase asociada al div */
+  -webkit-transform: translateX(0); /* no se desplace */
+}
+.triangulo_fijo:before{ /* definimos pseudoclase before*/
+  content: '';
+  border-style: solid;
+  border-width: 0px 10px 10px 10px;
+  border-color: transparent
+                transparent  
+                #a8cf45 
+                transparent;
+  /* Para hacer el triangulo se ha de dar border a todos menos ha donde 
+  queremos que apunte y color transparen a todos menos al opuesto donde
+  queremos que apunte*/
+  position: absolute;
+  top: 0px;
+  left: 43%;
+  /* posicionamos el pseudo elemento en una posición absoluta para que 
+  se pueda dibujar encima del elemento, top arriba 0 y se 
+  empezará a dibujar en el 43% del elemento empezando por izquierda */
+}
+.triangulo_fijo:hover{ /* Al pasar por encima del div */
+  -webkit-transform: translateY(10px);
+  -webkit-transition-duration:0.3s;
+  /*Al pasar por encima el div se mueve para abajo 10px*/
+}
+.triangulo_fijo:hover:before{ /* Cuando pase por encima de la psclase*/
+  /* tenemos que tener esta clase porque sino el pseudo elemento bajaria 
+  con la caja */
+  top: -9px;
+    /* al pasar por encima del pseudoelemento se posiciona desde arriba
+  -9px*/
+  -webkit-transition-duration:0.3s;
+  /*tiempo de transición del pseudoelemento */
+}
+
+/*Clase 87 Esquina de página*/
+.esquina_pagina{
+  -webkit-transform: translateX(0); /* no se desplace */
+}
+.esquina_pagina:before{
+  content: '';
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* le damos 0 para que no se vea*/
+  background: -webkit-linear-gradient(45deg, white 45%, #aaa 50%, 
+    #ccc 60%, white 100%);
+  /* degradado el fondo del cuadrado, 1ro inclinación de 45 grados, el
+  degradado empieza desde abajo hacia arriba en 45 grados, hasta el 
+  45% del cuadrado será blanco, hasta el 50% (osea un 5%) va a ser gris 
+  oscuro, hasta el 60% gris claro, y ya hasta el 100 blanco*/
+}
+.esquina_pagina:hover:before{
+  content: '';
+  -webkit-transition-duration:1s;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  bottom: 0px;
+  left: 0px;
+  background: -webkit-linear-gradient(45deg, white 45%, #aaa 50%, 
+    #ccc 60%, white 100%);
+  /*cuando pasamos el ratón es cuando el degradado se va haciendo grande
+  hasta los 25px, con una transición de 1 segundo*/
+}
+
+/*Clase 88 Sombra fija*/
+.sombra_fija{
+  -webkit-transform:translateX(0px); /* no se desplace */
+  position: relative;
+}
+.sombra_fija:before{
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 90%;
+  top: 100%;
+  left: 5%;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0,0,0,0.35) 0%,
+    rgba(0,0,0,0) 80%);
+  /* un degradado radial, situado en el centro, con forma de elipse, se 
+  define desde el centro hacia el borde. El primer rgb será negro con una
+  transparencia del 0.35 para pasar a ser negro hasta el 80% negro pero 
+  completamente transparente, el resto 20% se queda sin color  */
+  opacity: 0;
+  /*para que no se vea la sombra*/
+  -webkit-transition-duration: 0.5s;
+}
+.sombra_fija:hover{
+  -webkit-transform:translateY(-7px);
+}
+.sombra_fija:hover:before{
+  -webkit-transform:translateY(7px);
+  opacity: 1;
+  /*cuando pase el ratón por encima se irá hacia arriba 10 px y
+  se hará opaca la sombra por lo que se verá*/
+  -webkit-transition-duration: 0.5s;
+}
+
+/*Clase 89 Sombra difuminada*/
+.sombra_difu{
+  -webkit-transition-duration: 1s;
+  box-shadow: 0px 0px 1px rgba(0,0,0,1);
+  /*Crea una linea de un pixel alrededor de la caja, negra, total
+  mente opaca */
+}
+.sombra_difu:hover{
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+  /* aumenta la linea de tamaño a 8px, negra y con 0.6 de trans
+  parencia */
+}
+
+/* Clase 90 Sombra radial*/
+.sombra_radi{
+  position: relative;
+  box-shadow: 0px 0px 1px black;
+  /* Crea una sombra alrededor de la caja con 0 desplazamiento
+  horizontal, 0 de desplazamiento vertical, 1 de difuminado, 
+  de color negro*/
+}
+.sombra_radi:before,
+.sombra_radi:after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  left:0px;
+  opacity: 0;
+  -webkit-transition-duration: 0.5s;
+  /* atribuye estas propiedades comunes a los dos
+   pseudoelementos*/
+}
+.sombra_radi:before{
+  bottom: 100%;
+  /*con el 100 de botton empieza a dibujar del top para 
+  arriba*/
+  background: radial-gradient(ellipse at 50% 150%, rgba(0,0,0,0.6) 0%,
+    rgba(0,0,0,0) 80%);
+  /* elipse, empieza desde el centro un negro duro, y hacia afu
+  era a partir del 80% un negro totalmente transparente. Para 
+  poder seleccionar de esa elipse la que parte quiero visualizar,
+  le decimos que valla del 50% hacia arriba hasta el 150% */
+}
+.sombra_radi:after{
+  top: 100%;
+  /*con el 100 de botton empieza a dibujar del top para arriba*/
+  background: radial-gradient(ellipse at 50% -50%, rgba(0,0,0,0.6) 0%,
+    rgba(0,0,0,0) 80%);
+}
+.sombra_radi:hover:before,
+.sombra_radi:hover:after{
+  opacity: 1;
+  /*al pasar con el ratón por encima de los pseudoelementos
+  se vuelven opacos, osea visibles.*/
+}
+
+/*Clase 91 Sombra Externa*/
+.sombra_ex{
+  box-shadow: 0px 0px 1px black;
+  /* Sombra sin desplazamiento horizontal ni vertical, y tiene
+  un pixel de difuminado negro*/
+  -webkit-transition-duration: 1s;
+}
+.sombra_ex:hover{
+  box-shadow: 2px 3px 5px black;
+  /* Sombra con desplazamiento horizontal y 3 en vertical, y tiene
+  5 pixel de difuminado negro*/
+}
+
+/*clase 92 Iluminacion*/
+.iluminacion{
+  border: 2px solid gray;
+}
+.iluminacion:hover{
+  background: white;
+  /*le podemos poner , en vez de white, none para que se trans-
+  parente el color de fondo del body*/
+}
+
+/*Clase 93 Resalte borde*/ 
+.resalte_borde{
+  box-shadow: inset 0px 0px 0px 4px #ddd;
+  /*inset para borde interno, sin desplazamiento horizontal ni
+  vertical, sin difuminado y con 4px de grosor, con un color 
+  claro como el fondo o oscuro si el fondo es oscuro*/
+  -webkit-transition-duration: 1s;
+}
+.resalte_borde:hover{
+  box-shadow: inset 0px 0px 0px 4px #555;
+  /*asignamos un borde más oscuro*/
+}
+
+/*Clase 94 Borde interno*/
+.borde_interno{
+  position: relative;
+}
+.borde_interno:before{
+  content: '';
+  position: absolute;
+  border: 4px solid white;
+  /*creamos el borde*/
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  /*posicionamos el pseudoelemento a 4 px de cada lado y como es un
+  borde queda hueco por dentro*/
+  opacity: 0;
+  -webkit-transition-duration: 1s;
+}
+.borde_interno:hover:before{
+  opacity: 1;
+}
+  
+/*Clase 95 Expansión de Borde*/
+.expansion_borde{
+  position: relative;
+}
+.expansion_borde:before{
+  content: '';
+  position: absolute;;
+  border: 3px solid gray;
+  /*creamos el borde*/
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  /*posicionamos el borde en el borde del div del pseudoelemento*/
+  -webkit-transition-duration: 1s;
+}
+.expansion_borde:hover:before{
+  border: 3px solid gray;
+  /*creamos el borde*/
+  top: -6px;
+  bottom: -6px;
+  left: -6px;
+  right: -6px;
+  /*posicionamos el borde fuera del div */
+}
+
+/*Clase 96 Recogida del borde*/
+.expansion_borde2{
+  position: relative;
+}
+.expansion_borde2:before{
+  content: '';
+  position: absolute;;
+  border: 3px solid gray;
+  /*creamos el borde*/
+  top: -12px;
+  bottom: -12px;
+  left: -12px;
+  right: -12px;
+  /*posicionamos el borde en el borde del div del pseudoelemento*/
+  opacity: 0;
+  -webkit-transition-duration: 0.5s;
+}
+.expansion_borde2:hover:before{
+  border: 3px solid gray;
+  /*creamos el borde*/
+  top: -6px;
+  bottom: -6px;
+  left: -6px;
+  right: -6px;
+  /*posicionamos el borde fuera pero más cerca del div */
+  opacity: 1;
+}
+
+/*Clase 97 Esquina redondeada*/
+.esquina_redondeada{
+  -webkit-transition-duration: 0.5s;
+}
+.esquina_redondeada:hover{
+  border-radius: 20px;
+}
+
+/*Clase 98 Borde Inferior de Menus*/
+nav{
+  background:#F6E3CE;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /*Fondo de color, escogemos que ocupe todo el ancho, position absolut
+  para que ningún elemento se posicione encima, y lo colocamos arriba 
+  y a la izquierda del todo*/
+}
+nav ul{ 
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  width: 100%;
+  /*Modificamos la lista, le quitamos los margenes y el pading que viene
+  por defecto, y le quitamos el estilo de lista para que no aparezcan
+  los tipicos puntos de listar*/
+}
+li{
+  display: inline-block;
+  margin: 7px -1px;
+  width: 19%;
+  /*ponemos los elementos de la lista en inline-block, para que se 
+  pongan uno al lado del otro, y con un margen arriba y abajo de 7, y 
+  -1px para que esten jundos a los lados*/
+}
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  padding: 5px 10px;
+  /*quitamos subrayado, cambiamos color y negrita, para que se más facil
+  de hacer click le ponemos un padding de 5px arriba y abajo y 10px a los
+  lados */
+}
+li:nth-of-type(1) a:focus{
+  border-bottom: 3px solid #F5A9F2;
+}
+/*la primera etiqueta de tipo li, el enlace del li, cuando hagan focus, 
+osea cuando hagan click en el enlace, se activará un borde*/
+li:nth-of-type(2) a:focus{
+  border-bottom: 3px solid #5882FA;
+}
+li:nth-of-type(3) a:focus{
+  border-bottom: 3px solid #58FA82;
+}
+li:nth-of-type(4) a:focus{
+  border-bottom: 3px solid #F78181;
+} 
+
+/*Clase 99 Keyframe*/
+/*Clase 100 Estructura de Keyframe
+ Son animaciones que podemos aplicar a elementos html, por defecto si se
+ lo aplicamos con css al elemento, o en pseudoclases como por ejemplo
+ hover. Lo más parecido a funciones a las que podemos invocar*/
+
+/*
+animation-name:
+  indica el nombre que tendrá el keyframe que se añadirá a continuación
+animation-duration:
+  tiempo total de la animación:
+animation-iteration-count:
+  veces que se repetirá. Para que sea un bucle pondremos el valor infinite
+animation-delay:
+  retardo con el que comenzará a aplicarse la reproducción de la 
+  animación
+
+Puede ponerse todo junto en una misma linea. Para invocar al keyframe
+en la definición de la pseudoclase de una clase. Ejemplo:
+
+-webkit-animation: cambia_color 5s 1;
+
+Invocamos una animación de 5s que se llama cambia_color y se va a repetir
+una vez.
+Crearemos la keyframe:
+
+@-webkit-keyframes cambia_color{
+  50%{
+    background: red;
+  }
+  60%, 70%{
+    background:blue;
+  }
+}
+
+Progresivamente van cambiando las propiedades del estado en que se en-
+cuentran al que tienen que ir llegando. al final de la animación, a menos 
+que se indique lo contrario, debe de tener las mismas propiedades que
+al 0%
+*/
+
+/*Clase 101 Animación Flash*/
+
+.flash:hover{
+  -webkit-animation: 0.5s flash 1;
+  /*invocamos al keyframe*/
+}
+
+@-webkit-keyframes flash{
+  50%{
+    opacity: 1;
+  }
+  25%, 75%{
+    opacity: 0;
+  }
+}
+/*Clase 102 Animación Click*/
+
+.click:hover{
+  -webkit-animation: 0.5s click 1;
+  /*invocamos al keyframe*/
+}
+
+@-webkit-keyframes click{
+  50%{
+    -webkit-transform:scale(1.1);
+  }
+  25%, 75%{
+    -webkit-transform:scale(0.8);
+  }
+}
+
+/*Clase 103 Efecto Chicle*/
+
+.chicle:hover{
+  -webkit-animation: 0.8s chicle 1;
+  /*invocamos al keyframe*/
+}
+
+@-webkit-keyframes chicle{
+  30%{
+    -webkit-transform:scaleX(1.25) scaleY(0.75);
+  }
+  /*se alarga el ancho y se estrecha el alto*/
+  40%{
+    -webkit-transform:scaleX(0.75) scaleY(1.25);
+  }
+  /*se alarga el alto y se estrecha el ancho*/
+  60%{
+    -webkit-transform:scaleX(1.15) scaleY(0.85);
+  }
+}
+
+/*Clase 104 Animación vibrador*/
+
+.vibrador:hover{
+  -webkit-animation: 1s vibrador infinite;
+}
+/*Infinite, repite constantemente mientras esté el ratón encima*/
+
+@-webkit-keyframes vibrador{
+  10%, 30%, 50%, 70%, 90%{
+    -webkit-transform:translateX(-10px);
+  }
+  /*Mueve la hubicación del elemento div de forma horizontal, -10
+  se mueven 10 pixeles a la izquierda*/
+  20%, 40%, 60%, 80%, 100%{
+    -webkit-transform:translateX(10px);
+  }
+  5%, 25%, 45%, 65%, 85%{
+    -webkit-transform:translateY(-10px);
+  }
+  /*Mueve la hubicación del elemento div de forma horizontal, -10
+  se mueven 10 pixeles a la izquierda*/
+  15%, 35%, 55%, 75%, 95%{
+    -webkit-transform:translateX(10px);
+  }
+}
+
+/*Clase 105 Animación Circular*/
+
+.cartel:hover{
+  -webkit-animation: 1s cartel 1;
+  -webkit-transform-origin: top center;
+  /*Invoca a la keyframe y indica el punto de origen de la rotación
+  que ha de ser desde arriba en el centro, esto es para que cuando
+  se le indique al elemento que ha de rotar, no rote desde el centro 
+  del elemento, sino desde el centro superior */
+}
+
+@-webkit-keyframes cartel{
+  20%{
+    -webkit-transform:rotate(20deg);
+  }
+  40%{
+    -webkit-transform:rotate(-13deg);
+  }
+  60%{
+    -webkit-transform:rotate(7deg);
+  }
+  80%{
+    -webkit-transform:rotate(-3deg);
+  }
+}
+
+
+/*Clase 106 Animación Balanceo*/
+.balanceo:hover{
+  -webkit-animation: 1s balanceo 1;
+}
+
+@-webkit-keyframes balanceo{
+  20%{
+    -webkit-transform: scale(0.7)
+                       rotate(-6deg);
+  }
+  30%, 70%{
+    -webkit-transform: scale(1.1)
+                        rotate(6deg);
+  }
+  30%, 90%{
+    -webkit-transform: scale(1.1)
+                        rotate(-6deg);
+  }
+}
+
+/*Clase 107 Animación Vaiven, translate con porcentajes*/
+
+.vaiven:hover{
+  -webkit-animation: 1s vaiven 1;
+}
+
+@-webkit-keyframes vaiven{
+  15%{
+    -webkit-transform: rotate(-10deg)
+                        translateX(-25%);
+  /*La candidad total de lo que se traslade dependerá del tamaño del elemento, nos
+  sirve para aplicar el mismo efecto y proporción a elementos grandes y pequeños*/
+  }
+  30%{
+    -webkit-transform: rotate(5deg)
+                        translateX(20%);
+  }
+  45%{
+    -webkit-transform: rotate(-3deg)
+                        translateX(-10%);
+  }
+  60%{
+    -webkit-transform: rotate(2deg)
+                        translateX(5%);
+  }
+  75%{
+    -webkit-transform: rotate(-1deg)
+                        translateX(-3%);
+  }
+}
+
+/*Clase 108 Animación Caída - descolgado*/
+
+.caida:hover{
+  -webkit-animation: 1s caida 1;
+  -webkit-transform-origin: top left;
+}
+
+@-webkit-keyframes caida{
+  20%, 60%{
+    -webkit-transform: rotate(80deg);
+  }
+  40%{
+     -webkit-transform: rotate(60deg);
+  }
+  80%{
+    opacity: 1;
+    -webkit-transform: rotate(60deg);
+  }
+  100%{
+     -webkit-transform: translateY(400px);
+     opacity: 0;
+  }
+}
+
+/*Clase 109 ioRotativo*/
+
+.inRotativo:hover{
+  -webkit-animation: 1s inRotativo 1;  
+}
+
+@-webkit-keyframes inRotativo{
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%)
+                        rotate(-260deg)
+  }
+}
+
+.outRotativo:hover{
+  -webkit-animation: 1s outRotativo 1;  
+}
+
+@-webkit-keyframes outRotativo{
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(100%)
+                        rotate(260deg)
+  }
+}
+
+/*Clase 110 Efectos de Rebotes*/
+
+.rebote:hover{
+  -webkit-animation: 2s rebote 1;
+}
+
+@-webkit-keyframes rebote{
+  20%, 50%, 80%{
+    -webkit-transform: translateY(0px);
+    /*Como queremos que los primeros instantes se quede quieto haremos una 
+    translación a 0px, osea en el mismo sitio*/
+  }
+  30%{
+    -webkit-transform: translateY(-45px);
+  }
+  60%{
+    -webkit-transform: translateY(-25px);
+  }
+}
+
+/*Clase 111 ReboteIN*/
+
+.rebotein:hover{
+  -webkit-animation: 2s rebotein 1;
+}
+
+@-webkit-keyframes rebotein{
+  0%{
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+    /*opacity 0, para que de la sensación de que va apareciendo progrsivamente */
+  }
+  50%{
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+  }
+  70%{
+    -webkit-transform: scale(0.9);
+  }
+}
+
+/*Clase 112 Rebote IN Variante*/
+
+.reboteinva:hover{
+  -webkit-animation: 1s reboteinva 1;
+}
+
+@-webkit-keyframes reboteinva{
+  0%{
+    opacity: 0;
+    -webkit-transform: translateX(-400px);
+    /*opacity 0, para que de la sensación de que va apareciendo progrsivamente */
+  }
+  50%{
+    opacity: 1;
+    -webkit-transform: translateX(30px);
+  }
+  70%{
+    -webkit-transform: translateX(-10px);
+  }
+}
+
+/*Clase 113 Rebote Out*/
+
+.reboteout:hover{
+  -webkit-animation: 1s salida 1;
+}
+
+@-webkit-keyframes salida{
+  25%{
+    -webkit-transform: scale(0.9);
+  }
+  50%{
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+  }
+  100%{
+    opacity: 0;
+    -webkit-transform: scale(0);
+  }
+  /*Para que el opacity 0 del 100 no afecte a toda la animación, ponemos en el 50% 
+  el opacity a 1 para que desde el inicio hasta el 50% el opacity se mantenga a 1 y
+  apartir del 50 ya empieza a afectar el opacity a 0 */
+}
+
+/*Clase 114 Rebote Out Variante*/
+
+.reboteoutva:hover{
+  -webkit-animation: 2s reboteoutva 1;
+}
+
+@-webkit-keyframes reboteoutva{
+  20%{
+    opacity: 1;
+    -webkit-transform: translateY(20px);
+  }
+  100%{
+    opacity: 0;
+    -webkit-transform: translateY(-400px); 
+  }
+}
+
+/*Clase 115 Fade In
+Son animaciones en las que la caja se aparece progresivamente en pantalla*/
+
+.fadein:hover{
+  -webkit-animation: 2s fadein 1;
+}
+
+@-webkit-keyframes fadein{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.7;
+  }
+}
+
+/*Clase 116 Fade In Variantes, muestra un elemento poco a poco*/
+/* utilizamos clase anterior con un div que hace de tapa y se superpone al div
+original fadein, y la vamos a desplazar dejando visible la de detrás. */
+
+.tapa{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 160px;
+  position: absolute;
+  background: white;
+  z-index: 10;
+  /* width y height para que ocupe el 100 del total para que sea del mismo tamaño
+  que la caja padre que esta tapando y que se posicione arriba a la derecha justo 
+  cuando termina la caja padre. Y así conseguimos que este sea el resultado que adopta
+  rá al final de la animación.
+  y el z-index para superponerla por encima */
+  -webkit-animation: 2s retirar 1;
+}
+
+div div.fadein{
+  font-family: 'Arial';
+  background-color: #a8cf45;
+  margin: 25px 15px;
+  text-align: center;
+  font-weight: bolder;
+  padding: 15px 30px;
+  width: 80px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 10px;
+  overflow: hidden;
+  position: relative;
+  /*para que durante el movimiento la caja hija no se vea pondremos hidden para que 
+  cuando se salga de la caja padre no se vea*/
+}
+
+@-webkit-keyframes retirar{
+  0%{
+    left: 0px;
+    /*así tapamos la caja padre y como el 100 tiene que recuperar la posición 
+    anterior en la derecha de la caja, la tapa se irá desplazando hacia la derecha */
+  }
+  /*Retiraremos la caja hacia la derecha y que se empiece a ver lo de debajo, la 
+  caja padre*/
+}
+
+/*Clase 117 Animación VelozIn*/
+
+.velozin:hover{
+  -webkit-animation: 2s velozin 1;
+}
+
+@-webkit-keyframes velozin{
+  0%{
+    opacity: 0;
+    -webkit-transform: translateX(-200%)
+                       skewX(30deg);
+    /*el tanto porciento equivale a trasladar la caja el doble de su tamaño 
+    skewX inclinación en la parte laterarl, por eso X*/
+  }
+  60%{
+    opacity: 1;
+    -webkit-transform: translateX(-10%)
+                       skewX(-30deg);
+    /*Efecto de la frenada, desborda para el otro lado*/
+  }
+  80%{
+    -webkit-transform: translateX(0%)
+                       skewX(15deg);
+  }
+}
+
+/*Clase 118 Veloz Out*/
+
+.velozout:hover{
+  -webkit-animation: 1s velozout 1;
+}
+
+@-webkit-keyframes velozout{
+  15%{
+    opacity: 1;
+    /*para que no empiece a desaparecer al 0% sino al 15, así se mantiene
+    opaco más tiempo*/
+  }  
+  100%{
+    opacity: 0;
+    -webkit-transform: translateX(-200%)
+                       skewX(-70deg);
+  }
+}
+
+/*Clase 119 Giro*/
+
+.giro:hover{
+  -webkit-transform-origin: center;
+  /*indicar el origen de la rotación, eje el centro*/
+  -webkit-animation: 1s giro 1;
+}
+
+@-webkit-keyframes giro{
+  0%{
+    opacity: 0;
+    -webkit-transform: rotate(-200deg);
+  }
+}
+
+/*Clase 120 Giro Variantes*/
+
+.girova:hover{
+  -webkit-transform-origin: left bottom;
+  /*indicar el origen de la rotación, esquina izquierda*/
+  -webkit-animation: 1s girova 1;
+}
+
+@-webkit-keyframes girova{
+  0%{
+    opacity: 0;
+    -webkit-transform: rotate(-100deg);
+  }
+}
+
+/*Combinaciones de Keyframes, con pseudoelementos y pseudoclases*/
+/*Clase 121 Sombra Movil*/
+
+.sombramo{
+  -webkit-transform: translateX(0);
+}
+.sombramo:hover{
+  -webkit-transform: translateY(-6px);
+  -webkit-animation: 1.5s movercaja infinite;
+}
+
+@-webkit-keyframes movercaja{
+  50%{
+    -webkit-transform: translateY(-3px);
+  }
+}
+
+.sombramo:before{
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center,
+   ellipse, rgba(0, 0, 0, 0.35) 0%, 
+   rgba(0, 0, 0, 0) 80%);
+  -webkit-transition-duration: 0.3s;
+}
+.sombramo:hover:before{
+  opacity: 0.7;
+  -webkit-transform: translateY(6px);
+  -webkit-animation: 1.5s moversombra infinite;
+}
+
+@-webkit-keyframes moversombra{
+  50%{
+    opacity: 1;
+    -webkit-transform: translateY(3px);
+  }
+}
+
+
+/*Clase 122 Animación flecha*/
+
+.flecha{ /* clase asociada al div */
+  -webkit-transform: translateX(0); /* no se desplace */
+}
+.flecha:before{ /* definimos pseudoclase before*/
+  content: '';
+  border-style: solid;
+  border-width: 10px 10px 10px 0px;
+  border-color: transparent
+                #a8cf45 
+                transparent
+                transparent;
+  /* Para hacer el triangulo se ha de dar border a todos menos ha donde 
+  queremos que apunte y color transparen a todos menos al opuesto donde
+  queremos que apunte*/
+  position: absolute;
+  left: 0px;
+  top: 33%;
+  /* posicionamos el pseudo elemento en una posición absoluta para que 
+  se pueda dibujar encima del elemento, en el borde izquierdo 0 y se 
+  empezará a dibujar en el 33% del elemento empezando por arriba */
+}
+.flecha:hover:before{ /* Cuando pase por encima de la psclase*/
+  -webkit-animation: 1.5s flecha infinite;
+}
+
+@-webkit-keyframes flecha{
+  25%{
+    left: -9px;
+    -webkit-transform: rotate(0deg);
+    /*para que la caja aparezca, no tiene que tener rotación hasta el 25% */
+  }
+  65%{
+    left: -9px;
+    -webkit-transform: rotate(180deg);
+    /*indicamos que siga a 9px hacia la izquierda, y que rote*/
+  }
+  90%{
+    -webkit-transform: rotate(180deg);
+    /*indicamos que al 90% continue en la misma posición de 180 grados, el trian
+    gulo ya se estará ocultando para ponerse en la misma posición  de incio, pero
+    el giro empezará a hacerlo a partir del 90%, una vez ya el triangulo casi a 
+    quedado oculto por el div. */
+  }
+}
+/*Clase 123 Introducción a las Animaciones 3D*/
+/*Clase 124 Perspective 3D Giro en el eje horizontal*/
+
+/*Es la propiedad del transform que permite el efecto 3D, deberemos indicar
+  pixeles que representan cuan lejos o cerca estamos del elemento sobre el cual se
+  reproduce el 3d. Si ponemos que estamos muy cerca los efectos van a verse más 
+  pronunciados, si ponemos más cantidad de pixeles se vera desde más distancia.*/
+
+.girox:hover{
+  -webkit-animation: 1.5s girox 1;
+  -webkit-backface-visibility: visible;
+  /*la caja cuando se esta girando, cuando se gira por demás se llega a ver la parte 
+  trasera, entonces podemos determinar si esa parte se verá o no, con el backface*/
+}
+
+@-webkit-keyframes girox{
+  0%{
+    opacity: 0.5;
+    -webkit-transform: perspective(200px)
+                        rotateX(90deg);
+    /*de entrada va a estar semi trasparente y con 90 grados estará totalmente 
+    horizontal, en paralelo al suelo.*/
+  }
+  40%{
+    -webkit-transform: perspective(200px)
+                        rotateX(-20deg);
+  }
+  70%{
+    -webkit-transform: perspective(200px)
+                        rotateX(20deg);
+  }
+}
+
+/*Clase 125 Giro Vertical*/
+
+.giroy:hover{
+  -webkit-animation: 1.5s giroy 1;
+  -webkit-backface-visibility: visible;
+  /*la caja cuando se esta girando, cuando se gira por demás se llega a ver la parte 
+  trasera, entonces podemos determinar si esa parte se verá o no, con el backface*/
+}
+
+@-webkit-keyframes giroy{
+  0%{
+    opacity: 0.5;
+    -webkit-transform: perspective(200px)
+                        rotateY(90deg);
+    /*de entrada va a estar semi trasparente y con 90 grados estará totalmente 
+    horizontal, en paralelo al suelo.*/
+  }
+  40%{
+    -webkit-transform: perspective(200px)
+                        rotateY(-20deg);
+  }
+  70%{
+    -webkit-transform: perspective(200px)
+                        rotateY(20deg);
+  }
+}
+
+/*Clase 126 Giro salida vertical*/
+
+.giroouty:hover{
+  -webkit-animation: 1.5s giroouty 1;
+}
+
+@-webkit-keyframes giroouty{
+  100%{
+    opacity: 0.3;
+    -webkit-transform: perspective(100px)
+                        rotateY(90deg);
+  }
+}
+
+/*Clase 127 TranslateZ*/
+
+
+.giro3d:hover{
+  -webkit-animation: 1s girod 1;
+  -webkit-backface-visibility: visible;
+}
+
+@-webkit-keyframes girod{
+  40%{
+    -webkit-transform: perspective(300px)
+                        translateZ(120px)
+                        rotateY(170deg);
+    /*translatez mueve en el eje z, alfrente y atrás. El orden donde se ponga
+    el translate influye.  */
+  }
+  50%{
+    -webkit-transform: perspective(300px)
+                        translateZ(120px)
+                        rotateY(190deg);
+  }
+  80%{
+    -webkit-transform: perspective(300px)
+                        translateZ(0px)
+                        rotateY(360deg);
+  }
+  100%{
+    -webkit-transform: perspective(300px)
+                        rotateY(360deg);
+  }
+}
+
+/*Clase 128 Esqueleto de un cubo y 129 Cubo lateral*/ 
+
+
+.box{
+  display: inline-block;
+  margin: 50px;
+  padding: 0px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  background: white;
+}
+.box > div{
+  border: 2px solid black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  top: 0px;
+  width: 100px;
+  height: 120px;
+}
+.front{
+  opacity: 0.75;
+  box-shadow: inset 0px 2px 20px black;
+  background: url("../img/11.jpg");
+
+}
+.back{
+  background: white;
+  -webkit-transform: translateZ(-80px)
+                      rotateY(90deg);
+  left: 180px;
+  /*la caja back, la oculta. La posicionamos a cien pixeles hacia atrás, la rotamos
+  90 grados en el eje Y para que quede perpendicular, y la posicionamos a la izquierda
+  haciendo que parezca el lado oculto del cubo*/
+}
+.box{
+  transition-duration: 0.5s;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+}
+.box:hover{
+  -webkit-transform: perspective(800px)
+                     rotateY(-80deg);
+}
+.box:hover .front{
+  opacity: 1;
+}
+/*.box:nth-child(1) .front{*/
+  /*background: url("../img/11.jpg");*/
+/*}*/
+
+/*Clase 130 Bola del mundo en otro archivo*/
+/*Clase 131 Texto 3d*/
+
+p.texto3d{
+  font-size: 6em;
+  color: red;
+  text-shadow: -1px 1px 0px black,
+               -2px 2px 0px black,
+               -3px 3px 0px black,
+               -4px 4px 0px black,
+               -5px 5px 0px black,
+               -6px 6px 0px black;
+  /*para sombras para textos, desplazamiento horizontal hacia derecha, desplazaciento
+  vertical hacia arriba, difuminación en px, color */
+  /*convinado varias sobras hacemos que las sombras se desplacen hacia abajo*/
+}
+
+/*Clase 132 cubo rubik*/
+
+
+.contenedor{
+  perspective: 1000px;
+  /*perspective para que no esté cerca, con pocos las esquinas saldrían muy pronun-
+  ciadas y saldría distorsionado, se le puede dar perspectiva sin poner el transform*/
+  perspective-origin: 50% 50%;
+  background: white;
+}
+.cubo{
+  transform-style: preserve-3d;
+  transform: rotateY(-30deg);
+  /*Rotado 30 grados el cubo, que contiene las caras, para que se incline y poder
+  ver las caras */
+  margin:200px auto;
+  background: white;
+  height: 0px;
+  width: 0px;
+}
+.cubo > div{
+  height: 290px;
+  width: 290px;
+}
+.cara{
+  position: absolute;
+  border: 5px solid black;
+  opacity: 0.6;
+}
+
+/*.cubo > div = afecta a los div hijos del div clase cubo, osea afecta a los div
+"cara". A las caras. Le da un alto y largo de 290 porque se le deberá de sumas los
+5px por lado del borde, sumando 300px*/
+
+.cubo .cara:nth-child(1){
+  background: red;
+  transform: translateZ(170px);
+}
+.cubo .cara:nth-child(2){
+  background: blue;
+  transform: translateZ(-170px);
+}
+.cubo .cara:nth-child(3){
+  background: green;
+  transform: translateX(-170px) 
+              rotateY(90deg);
+}
+.cubo .cara:nth-child(4){
+  background: yellow;
+  transform: translateX(180px) 
+              rotateY(-90deg);
+}
+.cubo .cara:nth-child(5){
+  background: orange;
+  transform: translateY(-165px) 
+              rotateX(-90deg);
+}
+.cubo .cara:nth-child(6){
+  background: white;
+  transform: translateY(165px) 
+              rotateX(-90deg);
+}
+
+/*los translate deberían de ser de 150 pero como tengo mucho codigo en este mismo 
+archivo algún código le está afectando y no se que es :(*/
+
+.cubo{
+  animation: giro 20s infinite linear;
+}
+
+@-webkit-keyframes giro{
+  0%{
+    transform: rotateX(-45deg) rotateY(0deg);
+  }
+  50%{
+    transform: rotateX(45deg) rotateY(360deg);
+  }
+  100%{
+    transform: rotateX(-45deg) rotateY(720deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
